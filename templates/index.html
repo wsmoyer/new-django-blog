@@ -29,7 +29,7 @@
       {% for post in posts %}
         <!-- Post-->
         <div class="row d-flex align-items-stretch">
-          <div class="image col-lg-5"><img src="{{ post.thumbnail.url }}" alt="..."></div>
+          <div class="image col-lg-5"><img src="{{ post.thumbnail.url }}" class="img-responsive" alt="..."></div>
           <div class="text col-lg-7">
             <div class="text-inner d-flex align-items-center">
               <div class="content">
@@ -42,7 +42,7 @@
                     <h2 class="h4">{{post.title}}</h2></a>
                 </header>
                 <p>{{post.overview}}</p>
-                <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                <footer class="post-footer d-flex align-items-center"><a href="{{post.get_absolute_url}}" class="author d-flex align-items-center flex-wrap">
                     <div class="avatar"><img src="{{post.author.profile_picture.url}}" alt="..." class="img-fluid"></div>
                     <div class="title"><span>{{post.author}}</span></div></a>
                   <div class="date"><i class="icon-clock"></i> 2 months ago</div>
@@ -75,12 +75,12 @@
         <div class="row">
         {% for obj in latest %}
           <div class="post col-md-4">
-            <div class="post-thumbnail"><a href="post.html"><img src="{{obj.thumbnail.url}}" alt="..." class="img-fluid"></a></div>
+            <div class="post-thumbnail"><a href="{{obj.get_absolute_url}}"><img src="{{obj.thumbnail.url}}" alt="..." class="img-fluid"></a></div>
             <div class="post-details">
               <div class="post-meta d-flex justify-content-between">
                 <div class="date">{{obj.timestamp}}</div>
                 <div class="category"><a href="#">{{obj.category}}</a></div>
-              </div><a href="post.html">
+              </div><a href="{{obj.get_absolute_url}}">
                 <h3 class="h4">{{obj.title}}</h3></a>
                            <p class="text-muted">{{ obj.overview|linebreaks|truncatechars:200 }}</p>
 

@@ -8,23 +8,23 @@
                   {% for item in queryset %}
 
             <div class="post-single">
-              <div class="post-thumbnail"><img src="img/blog-post-3.jpeg" alt="..." class="img-fluid"></div>
+              {% comment %} <div class="post-thumbnail"><img src="{{item.thumbnail.url}}" alt="..." class="img-fluid"></div> {% endcomment %}
               <div class="post-details">
                 <div class="post-meta d-flex justify-content-between">
                   <div class="category"><a href="#">Business</a><a href="#">Financial</a></div>
                 </div>
                 <h1>{{item.title}}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
-                    <div class="title"><span>John Doe</span></div></a>
+                    <div class="avatar"><img src="{{item.author.profile_picture.url}}" alt="..." class="img-fluid"></div>
+                    <div class="title"><span>{{item.author}}</span></div></a>
                   <div class="d-flex align-items-center flex-wrap">       
-                    <div class="date"><i class="icon-clock"></i> 2 months ago</div>
+                    <div class="date"><i class="icon-clock"></i>{{item.timestamp}}</div>
                     <div class="views"><i class="icon-eye"></i> 500</div>
                     <div class="comments meta-last"><i class="icon-comment"></i>12</div>
                   </div>
                 </div>
                 <div class="post-body">
-                  <p class="lead">{{item.overview}}<p>
+                  <p class="lead">{{ item.overview|linebreaks|truncatechars:200 }}<p>
                 
                
                 </div>
